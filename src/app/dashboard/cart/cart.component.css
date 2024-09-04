@@ -1,0 +1,54 @@
+.sidebar {
+  top: 77px;
+  right: 0;
+  background-color: #ffffff;
+  width: 25rem;
+  height: 100vh;
+  padding: 0;
+  position: fixed;
+  transition: transform 300ms ease-in;
+  z-index: 2;
+  box-shadow:
+    rgba(0, 0, 0, 0.1) 0px 10px 15px -3px,
+    rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
+}
+
+.isHidden {
+  transform: translateX(25rem);
+  transition: transform 300ms ease-out;
+}
+
+.sidebar-menu {
+  list-style: none;
+  padding: 1.5rem;
+  margin-top: 0;
+}
+
+.sidebar-menu__item {
+  display: block;
+  cursor: pointer;
+  margin-bottom: 0.5rem;
+}
+.scrollable-container {
+  height: calc(100vh - 250px);
+  padding-bottom: 0;
+  flex-direction: column;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+.card {
+  background-color: white;
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+@media (max-width: 767px) {
+  .scrollable-container {
+    height: calc(100vh - 350px);
+  }
+}

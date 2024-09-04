@@ -1,0 +1,40 @@
+<div class="container-fluid">
+  <div class="row mb-3">
+    <div class="col-md-6 d-flex">
+      <h2 class="font-heading">Orders</h2>
+    </div>
+    <div class="col-md-6 d-flex">
+      <button
+        class="btn add-btn"
+        type="button"
+        routerLink="/dashboard/orders/new-order"
+        routerLinkActive="active"
+      >
+        New Order
+      </button>
+    </div>
+  </div>
+  <div
+    *ngIf="!isFoundData"
+    style="
+      width: 100%;
+      height: 500px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    "
+  >
+    <h1>No Data Found</h1>
+  </div>
+  <div *ngIf="isFoundData" class="order-list-container mobile-margin-bottom">
+    <div class="row" *ngFor="let orderChunk of chunkedOrders">
+      <!-- <app-card *ngFor="let order of orderChunk" [order]="order"></app-card> -->
+      <div class="col-md-4" *ngFor="let order of orderChunk">
+        <app-card
+          [order]="order"
+          (ondeleteOrder)="onDeleteReload($event)"
+        ></app-card>
+      </div>
+    </div>
+  </div>
+</div>

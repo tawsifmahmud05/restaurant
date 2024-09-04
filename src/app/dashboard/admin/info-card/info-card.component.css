@@ -1,0 +1,26 @@
+.custom-card {
+  border-top: 5px solid rgb(200, 50, 50);
+  border-radius: 0.25rem;
+}
+.custom-card-body {
+  display: flex;
+  flex-direction: column;
+}
+.custom-card-icon {
+  font-size: 2rem;
+  height: 100%;
+  margin-right: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.custom-card-number {
+  display: flex;
+  align-items: end;
+  font-size: 5rem;
+  font-weight: bold;
+}
+.custom-card-title {
+  font-size: 1.5em;
+  font-weight: bold;
+}

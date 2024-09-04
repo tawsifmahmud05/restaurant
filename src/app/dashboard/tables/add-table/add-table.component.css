@@ -1,0 +1,54 @@
+.font-heading {
+  font-size: 22px;
+  font-weight: 700;
+  color: primary;
+  padding-bottom: 5px;
+  border-bottom: 3px solid #cc080b;
+}
+
+.form {
+  background-color: white;
+  border-radius: 10px;
+}
+
+.form-control-file {
+  display: none; /* Hide the default file input button */
+}
+
+.form-label {
+  font-weight: bold;
+}
+
+.custom-file-label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  padding: 10px;
+  background-color: #ffffff;
+  color: rgb(0, 0, 0);
+  text-align: center;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.btn {
+  background-color: rgb(200, 50, 50) !important;
+  color: white !important;
+}
+
+input.ng-invalid.ng-touched,
+textarea.ng-invalid.ng-touched {
+  border: 1px solid red;
+}
+
+.cross-button {
+  position: absolute;
+  z-index: 1;
+}
+.food-image {
+  position: relative;
+  width: 100%;
+}

@@ -1,0 +1,45 @@
+<!-- <div class="container-fluid bg-image">
+  <div class="bg-overlay"></div>
+  <div class="content-area">
+    <div class="row">
+      <div class="col-md-2 fixed-sidebar">
+        <app-sidebar></app-sidebar>
+      </div>
+      <div class="col-md-10 g-0 father-content" style="z-index: 10">
+        <div style="z-index: 20000">
+          <app-cart [hideCart]="isCartHidden"></app-cart>
+        </div>
+        <div class="row fixed-header">
+          <app-header (toggleSidebar)="toggleSidebar()"></app-header>
+        </div>
+        <div class="row content">
+          <router-outlet></router-outlet>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> -->
+<div class="bg-image">
+  <div class="bg-overlay">
+    <div class="row g-0">
+      <div class="col-md-2">
+        <div class="sidebar">
+          <app-sidebar></app-sidebar>
+        </div>
+      </div>
+      <div class="col-md-10">
+        <div class="row g-0">
+          <div style="z-index: 20000">
+            <app-cart [hideCart]="isCartHidden"></app-cart>
+          </div>
+          <div class="header">
+            <app-header (toggleSidebar)="toggleSidebar()"></app-header>
+          </div>
+          <div class="content">
+            <router-outlet></router-outlet>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

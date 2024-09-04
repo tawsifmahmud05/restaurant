@@ -1,0 +1,93 @@
+<div class="container-fluid bg-image">
+  <div class="bg-overlay"></div>
+  <!-- Overlay for opacity -->
+  <div class="row justify-content-center align-items-center vh-100">
+    <div class="col-md-6 side-img">
+      <div
+        class="login-img d-flex justify-content-center align-items-center position-relative"
+      >
+        <img
+          src="../../assets/images/food-bg2.png"
+          class="img img-fluid img-bg-shape position-absolute"
+        />
+        <img
+          src="../../assets/images/login-bg.png"
+          class="img img-fluid img-bg-rotate"
+        />
+      </div>
+    </div>
+    <div class="col-md-6 d-flex justify-content-center">
+      <div class="card login-card p-5">
+        <!-- <div class="card-header"></div> -->
+        <div class="d-flex justify-content-center align-items-center">
+          <div>
+            <img
+              src="../../assets/images/logo.png"
+              style="height: 110px; width: 110px"
+            />
+            <p>BSS Restaurant</p>
+          </div>
+        </div>
+
+        <div class="card-body">
+          <form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)">
+            <div class="mb-3">
+              <label for="username" class="form-label">Username</label>
+              <input
+                type="text"
+                class="form-control"
+                id="username"
+                name="username"
+                [(ngModel)]="username"
+                #usernameCtrl="ngModel"
+                required
+              />
+              <div
+                class="invalid-feedback"
+                *ngIf="usernameCtrl.invalid && usernameCtrl.touched"
+              >
+                Username is required
+              </div>
+            </div>
+            <div class="mb-3">
+              <label for="password" class="form-label">Password</label>
+              <div class="input-group">
+                <input
+                  [type]="hide ? 'password' : 'text'"
+                  class="form-control"
+                  id="password"
+                  name="password"
+                  [(ngModel)]="password"
+                  #passwordCtrl="ngModel"
+                  required
+                />
+                <button
+                  class="btn btn-outline-secondary"
+                  type="button"
+                  (click)="togglePasswordVisibility()"
+                >
+                  <i class="bi bi-eye{{ hide ? '-slash' : '' }}"></i>
+                </button>
+              </div>
+              <div
+                class="invalid-feedback"
+                *ngIf="passwordCtrl.invalid && passwordCtrl.touched"
+              >
+                Password is required
+              </div>
+            </div>
+            <div class="login-button d-grid">
+              <button
+                type="submit"
+                class="btn btn-danger"
+                [disabled]="loginForm.invalid"
+              >
+                Login
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,122 @@
+<div class="container-fluid table text-start">
+  <div class="mb-3">
+    <h2 class="font-heading">Add Table</h2>
+  </div>
+  <div class="form p-3 mobile-margin-bottom">
+    <form #tableForm="ngForm" (ngSubmit)="onSubmit(tableForm)">
+      <div class="row image-flex-direction">
+        <div class="col-md-8">
+          <div>
+            <label for="tableNumber" class="form-label">Table Number</label>
+            <input
+              type="text"
+              id="tableNumber"
+              name="tableNumber"
+              class="form-control"
+              [(ngModel)]="table.tableNumber"
+              required
+              #tableNumberInput="ngModel"
+            />
+            <div
+              *ngIf="
+                tableNumberInput.hasError('required') &&
+                tableNumberInput.touched
+              "
+              class="text-danger"
+            >
+              Table number is required.
+            </div>
+          </div>
+          <div class="mt-3">
+            <label for="numberOfSeats" class="form-label"
+              >Number of seats</label
+            >
+            <select
+              id="numberOfSeats"
+              name="numberOfSeats"
+              class="form-select"
+              [(ngModel)]="table.numberOfSeats"
+              required
+              #numberOfSeatsInput="ngModel"
+            >
+              <option value="" disabled selected>Select seats</option>
+              <option value="2">2</option>
+              <option value="4">4</option>
+              <option value="6">6</option>
+              <option value="8">8</option>
+              <option value="12">12</option>
+            </select>
+            <div
+              *ngIf="
+                numberOfSeatsInput.hasError('required') &&
+                numberOfSeatsInput.touched
+              "
+              class="text-danger"
+            >
+              Number of seats is required.
+            </div>
+          </div>
+          <div>
+            <button
+              type="submit"
+              class="btn mt-3 d-flex w-100 justify-content-center"
+              [disabled]="!tableForm.form.valid"
+            >
+              Submit
+            </button>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="d-flex h-100">
+            <div *ngIf="!imageSelected" style="width: 100%">
+              <input
+                type="file"
+                id="image"
+                name="image"
+                class="form-control-file"
+                [(ngModel)]="table.image"
+                (change)="onFileSelected($event)"
+              />
+              <label for="image" class="custom-file-label"
+                >Add Table Image</label
+              >
+            </div>
+            <div *ngIf="imageSelected" style="width: 100%; position: relative">
+              <button
+                type="button"
+                class="close cross-button"
+                style="
+                  position: absolute;
+                  top: 10px;
+                  left: 10px;
+                  z-index: 1;
+                  background-color: rgba(255, 255, 255, 0.6);
+                  border: none;
+                  font-size: 24px;
+                  color: rgb(0, 0, 0);
+                "
+                (click)="toggleSelect()"
+              >
+                <span>&times;</span>
+              </button>
+              <img
+                class="table-image img-fluid"
+                [src]="table.base64"
+                alt="{{ table.tableNumber }}"
+                style="display: block; width: 100%; height: auto"
+              />
+            </div>
+            <!-- <input
+              type="file"
+              id="image"
+              name="image"
+              class="form-control-file"
+              [(ngModel)]="table.image"
+            />
+            <label for="image" class="custom-file-label">Add Table Image</label> -->
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,80 @@
+<!-- card.component.html -->
+<mat-card class="example-card my-2">
+  <mat-card-header>
+    <div class="me-auto">
+      <p style="font-weight: 600">{{ order.orderNumber }}</p>
+      <p style="font-weight: 600; display: flex">{{ order.orderTime }}</p>
+    </div>
+    <div class="p-2">
+      <a class="delete-btn" (click)="deleteOrder(order.id)">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          class="bi bi-trash3-fill"
+          viewBox="0 0 16 16"
+        >
+          <path
+            d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5m-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5M4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06m6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528M8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5"
+          />
+        </svg>
+      </a>
+    </div>
+  </mat-card-header>
+  <mat-card-content>
+    <div *ngFor="let item of order.orderItems" class="food-item">
+      <div class="order-item-card">
+        <div>
+          <img
+            [src]="
+              'https://restaurantapi.bssoln.com/images/food/' + item.food.image
+            "
+            alt="{{ item.food.name }}"
+            width="80"
+            class="rounded-circle"
+          />
+        </div>
+        <div class="w-100">
+          <h5 class="mb-2 d-flex flex-start">{{ item.food.name }}</h5>
+          <div class="d-flex justify-content-between">
+            <p class="text-green font-weight-bold">{{ item.totalPrice }}৳</p>
+            <p>Qty: {{ item.quantity }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </mat-card-content>
+  <hr />
+  <mat-card-actions class="d-flex align-items-stretch justify-content-between">
+    <div>
+      <p>
+        Total Item:
+        <span class="font-weight-bold">{{ order.orderItems.length }}</span>
+      </p>
+      <p class="text-h6">
+        Total: <strong class="text-green"> {{ order.amount }}৳</strong>
+      </p>
+    </div>
+    <div class="order-edit-col">
+      <p class="text-end">
+        Table:
+        <span class="font-weight-bold"> {{ order.table.tableNumber }}</span>
+      </p>
+      <div class="d-flex align-items-center justify-content-between">
+        <!-- <p class="font-weight-bold text-end mt-1 mx-2 text-orange-darken-1">
+          {{ order.orderStatus }}
+        </p> -->
+        <mat-form-field>
+          <mat-select
+            [(value)]="selectedStatusValue"
+            (selectionChange)="onStatusChange($event.value)"
+          >
+            <mat-option *ngFor="let status of statuses" [value]="status.value">
+              {{ status.label }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
+  </mat-card-actions>
+</mat-card>

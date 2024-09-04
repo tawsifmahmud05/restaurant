@@ -1,0 +1,39 @@
+<h2 mat-dialog-title>Assign Employee To a Table</h2>
+<mat-dialog-content>
+  <div class="row g-0">
+    <div class="col-md-6 d-flex align-items-center">
+      <img
+        class="img-fluid"
+        [src]="'https://restaurantapi.bssoln.com/images/table/' + data.img"
+        alt="{{ data.id }}"
+      />
+    </div>
+    <div class="col-md-6 p-3">
+      <div class="fs-5 mb-3">
+        <span>Table ID: {{ data.id }}</span>
+      </div>
+      <div class="fs-5 mb-3">
+        <span>Table Size: {{ data.seat }}</span>
+      </div>
+      <mat-form-field>
+        <mat-label>Employees</mat-label>
+        <mat-select [formControl]="assignedEmployees" multiple>
+          @for (employee of employeeList; track employee) {
+            <mat-option [value]="employee">{{ employee.name }}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button
+    mat-button
+    [mat-dialog-close]="true"
+    cdkFocusInitial
+    (click)="onProceedClick()"
+  >
+    Assign
+  </button>
+</mat-dialog-actions>

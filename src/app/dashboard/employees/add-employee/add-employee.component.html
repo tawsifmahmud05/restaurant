@@ -1,0 +1,333 @@
+<div class="container-fluid table text-start">
+  <div class="mb-3">
+    <h2 class="font-heading">Add Employee</h2>
+  </div>
+  <div class="form p-3 mobile-margin-bottom">
+    <form #employeeForm="ngForm" (ngSubmit)="onSubmit(employeeForm)">
+      <div class="row image-flex-direction">
+        <div class="col-md-8">
+          <div class="mb-3">
+            <label for="firstName" class="form-label fw-bold">First Name</label>
+            <input
+              type="text"
+              id="firstName"
+              name="firstName"
+              class="form-control"
+              [(ngModel)]="employee.firstName"
+              required
+              #firstNameInput="ngModel"
+            />
+            <div
+              *ngIf="
+                firstNameInput.hasError('required') && firstNameInput.touched
+              "
+              class="text-danger"
+            >
+              First name is required.
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="name" class="form-label">Middle Name</label>
+            <input
+              type="text"
+              id="middleName"
+              name="middleName"
+              class="form-control"
+              [(ngModel)]="employee.middleName"
+              required
+              #middleNameInput="ngModel"
+            />
+            <div
+              *ngIf="
+                middleNameInput.hasError('required') && middleNameInput.touched
+              "
+              class="text-danger"
+            >
+              Middle name is required.
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="name" class="form-label">Last Name</label>
+            <input
+              type="text"
+              id="lastName"
+              name="lastName"
+              class="form-control"
+              [(ngModel)]="employee.lastName"
+              required
+              #lastNameInput="ngModel"
+            />
+            <div
+              *ngIf="
+                lastNameInput.hasError('required') && lastNameInput.touched
+              "
+              class="text-danger"
+            >
+              Last name is required.
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="d-flex h-100">
+            <div *ngIf="!imageSelected" style="width: 100%">
+              <input
+                type="file"
+                id="image"
+                name="image"
+                class="form-control-file"
+                [(ngModel)]="employee.image"
+                (change)="onFileSelected($event)"
+              />
+              <label for="image" class="custom-file-label"
+                >Add Employee Image</label
+              >
+            </div>
+            <div *ngIf="imageSelected" style="width: 100%; position: relative">
+              <button
+                type="button"
+                class="close cross-button"
+                style="
+                  position: absolute;
+                  top: 10px;
+                  left: 10px;
+                  z-index: 1;
+                  background-color: rgba(255, 255, 255, 0.6);
+                  border: none;
+                  font-size: 24px;
+                  color: rgb(0, 0, 0);
+                "
+                (click)="toggleSelect()"
+              >
+                <span>&times;</span>
+              </button>
+              <img
+                class="food-image img-fluid"
+                [src]="employee.base64"
+                alt="{{ employee.firstName }}"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4">
+          <div>
+            <label for="spouseName" class="form-label">Spouse Name</label>
+            <input
+              type="text"
+              id="spouseName"
+              name="spouseName"
+              class="form-control"
+              [(ngModel)]="employee.spouseName"
+              required
+              #spouseNameInput="ngModel"
+            />
+            <div
+              *ngIf="
+                spouseNameInput.hasError('required') && spouseNameInput.touched
+              "
+              class="text-danger"
+            >
+              Spouse name is required.
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div>
+            <label for="fatherName" class="form-label">Father Name</label>
+            <input
+              type="text"
+              id="fatherName"
+              name="fatherName"
+              class="form-control"
+              [(ngModel)]="employee.fatherName"
+              required
+              #fatherNameInput="ngModel"
+            />
+            <div
+              *ngIf="
+                fatherNameInput.hasError('required') && fatherNameInput.touched
+              "
+              class="text-danger"
+            >
+              Father name is required.
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div>
+            <label for="motherName" class="form-label">Mother Name</label>
+            <input
+              type="text"
+              id="motherName"
+              name="motherName"
+              class="form-control"
+              [(ngModel)]="employee.motherName"
+              required
+              #motherNameInput="ngModel"
+            />
+            <div
+              *ngIf="
+                motherNameInput.hasError('required') && motherNameInput.touched
+              "
+              class="text-danger"
+            >
+              Mother name is required.
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4">
+          <div>
+            <label for="designation" class="form-label">Designation</label>
+            <input
+              type="text"
+              id="designation"
+              name="designation"
+              class="form-control"
+              [(ngModel)]="employee.designation"
+              required
+              #designationInput="ngModel"
+            />
+            <div
+              *ngIf="
+                designationInput.hasError('required') &&
+                designationInput.touched
+              "
+              class="text-danger"
+            >
+              Designation is required.
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div>
+            <label for="email" class="form-label">Email</label>
+            <input
+              type="text"
+              id="email"
+              name="email"
+              class="form-control"
+              [(ngModel)]="employee.email"
+              required
+              email
+              #emailInput="ngModel"
+            />
+            <div
+              *ngIf="emailInput.hasError('required') && emailInput.touched"
+              class="text-danger"
+            >
+              Email is required.
+            </div>
+            <div
+              *ngIf="emailInput.hasError('email') && emailInput.touched"
+              class="text-danger"
+            >
+              Please enter a valid email address.
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div>
+            <label for="phoneNumber" class="form-label">Phone</label>
+            <input
+              type="text"
+              id="phoneNumber"
+              name="phoneNumber"
+              class="form-control"
+              [(ngModel)]="employee.phoneNumber"
+              required
+              minlength="11"
+              pattern="[0-9]+"
+              #phoneNumberInput="ngModel"
+            />
+            <div
+              *ngIf="
+                phoneNumberInput.hasError('required') &&
+                phoneNumberInput.touched
+              "
+              class="text-danger"
+            >
+              Phone number is required.
+            </div>
+            <div
+              *ngIf="
+                phoneNumberInput.hasError('pattern') && phoneNumberInput.touched
+              "
+              class="text-danger"
+            >
+              Phone number must be 11 digits long.
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-3">
+          <div>
+            <label for="gender" class="form-label">Gender</label>
+            <select
+              id="gender"
+              name="gender"
+              class="form-select"
+              [(ngModel)]="employee.genderId"
+              required
+            >
+              <option value="" disabled selected>Select gender</option>
+              <option value="1">Male</option>
+              <option value="2">Female</option>
+              <option value="3">Other</option>
+            </select>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div>
+            <label for="dob" class="form-label">Date of Birth</label>
+            <input
+              type="date"
+              id="dob"
+              name="dob"
+              class="form-control"
+              [(ngModel)]="employee.dob"
+              required
+            />
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div>
+            <label for="doj" class="form-label">Date of Join</label>
+            <input
+              type="date"
+              id="doj"
+              name="doj"
+              class="form-control"
+              [(ngModel)]="employee.joinDate"
+              required
+            />
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div>
+            <label for="name" class="form-label">NID</label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              class="form-control"
+              [(ngModel)]="employee.nid"
+              required
+            />
+          </div>
+        </div>
+      </div>
+
+      <button
+        type="submit"
+        class="btn mt-5 d-flex w-100 justify-content-center"
+        [disabled]="!employeeForm.form.valid"
+      >
+        Submit
+      </button>
+    </form>
+  </div>
+</div>

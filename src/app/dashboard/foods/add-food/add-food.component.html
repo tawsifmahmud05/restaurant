@@ -1,0 +1,184 @@
+<div class="container-fluid table text-start">
+  <div class="mb-3">
+    <h2 class="font-heading">Add Food</h2>
+  </div>
+  <div class="form p-3 mobile-margin-bottom">
+    <form #foodForm="ngForm" (ngSubmit)="onSubmit(foodForm)">
+      <div class="row image-flex-direction">
+        <div class="col-md-8">
+          <div>
+            <label for="name" class="form-label">Food Name</label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              class="form-control"
+              [(ngModel)]="food.name"
+              required
+              #nameInput="ngModel"
+            />
+            <div
+              *ngIf="nameInput.hasError('required') && nameInput.touched"
+              class="text-danger"
+            >
+              Name is required.
+            </div>
+          </div>
+          <div>
+            <label for="description" class="form-label">Description</label>
+            <textarea
+              type="text"
+              id="description"
+              name="description"
+              class="form-control"
+              [(ngModel)]="food.description"
+              required
+              #desciptionInput="ngModel"
+              style="height: 200px"
+            ></textarea>
+            <div
+              *ngIf="
+                desciptionInput.hasError('required') && desciptionInput.touched
+              "
+              class="text-danger"
+            >
+              Description is required.
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="d-flex h-100">
+            <div *ngIf="!imageSelected" style="width: 100%">
+              <input
+                type="file"
+                id="image"
+                name="image"
+                class="form-control-file"
+                [(ngModel)]="food.image"
+                (change)="onFileSelected($event)"
+              />
+              <label for="image" class="custom-file-label"
+                >Add Food Image</label
+              >
+            </div>
+            <div *ngIf="imageSelected" style="width: 100%; position: relative">
+              <button
+                type="button"
+                class="close cross-button"
+                style="
+                  position: absolute;
+                  top: 10px;
+                  left: 10px;
+                  z-index: 1;
+                  background-color: rgba(255, 255, 255, 0.6);
+                  border: none;
+                  font-size: 24px;
+                  color: rgb(0, 0, 0);
+                "
+                (click)="toggleSelect()"
+              >
+                <span>&times;</span>
+              </button>
+              <img
+                class="food-image img-fluid"
+                [src]="food.base64"
+                alt="{{ food.name }}"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-3">
+          <div>
+            <label for="price" class="form-label">Price</label>
+            <input
+              type="text"
+              id="price"
+              name="price"
+              class="form-control"
+              [(ngModel)]="food.price"
+              required
+              #priceInput="ngModel"
+              (ngModelChange)="discountedPrice()"
+            />
+            <div
+              *ngIf="priceInput.hasError('required') && priceInput.touched"
+              class="text-danger"
+            >
+              Price is required.
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div>
+            <label for="distype" class="form-label">Select Discount Type</label>
+            <select
+              id="distype"
+              name="distype"
+              class="form-select"
+              [(ngModel)]="food.discountType"
+              required
+              (change)="discountedPrice()"
+            >
+              <!-- <option value="" disabled selected>Select gender</option> -->
+              <option value="0" selected>None</option>
+              <option value="1">Flat</option>
+              <option value="2">Percentage</option>
+            </select>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div>
+            <label for="discount" class="form-label"
+              >Discount
+              {{
+                food.discountType != 0
+                  ? food.discountType == 1
+                    ? "in (৳)"
+                    : "in (%)"
+                  : ""
+              }}</label
+            >
+            <input
+              type="text"
+              id="discount"
+              name="discount"
+              class="form-control"
+              [(ngModel)]="food.discount"
+              required
+              #discountInput="ngModel"
+              [disabled]="food.discountType == 0"
+              (ngModelChange)="discountedPrice()"
+            />
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div>
+            <label for="discountPrice" class="form-label"
+              >Discounted Price</label
+            >
+            <input
+              type="text"
+              id="discountPrice"
+              name="discountPrice"
+              class="form-control"
+              [(ngModel)]="food.discountPrice"
+              required
+              #discountPriceInput="ngModel"
+              disabled
+            />
+          </div>
+        </div>
+      </div>
+
+      <button
+        type="submit"
+        class="btn mt-5 d-flex w-100 justify-content-center"
+        [disabled]="!foodForm.form.valid"
+      >
+        Submit
+      </button>
+    </form>
+  </div>
+</div>

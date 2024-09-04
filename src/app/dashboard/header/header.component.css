@@ -1,0 +1,61 @@
+.navbar {
+  background-color: rgb(255, 255, 255);
+  color: white !important;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+}
+.navbar a {
+  text-decoration: none;
+}
+.navbar a span {
+  color: rgb(200, 50, 50);
+  font-weight: 700;
+  font-size: 25px;
+  text-shadow: 1px 1px grey;
+}
+
+.logout-btn {
+  display: none;
+  visibility: hidden;
+}
+
+.cart-buttton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  height: 40px;
+  width: 40px;
+  fill: rgb(200, 50, 50);
+  text-decoration: none !important;
+  color: rgb(200, 50, 50);
+}
+.active {
+  color: white;
+  background-color: rgba(200, 50, 50, 0.8) !important;
+}
+.cart-buttton:hover {
+  fill: white;
+  background-color: rgb(252, 194, 194) !important;
+}
+
+@media (max-width: 767px) {
+  .navbar a img {
+    height: 30px;
+    width: 30px;
+  }
+  .navbar a span {
+    color: rgb(200, 50, 50);
+    font-weight: 700;
+    font-size: 18px;
+    text-shadow: 1px 1px grey;
+  }
+  .logout-btn {
+    display: block;
+    visibility: visible;
+    background-color: white !important;
+    color: rgb(200, 50, 50);
+    font-weight: 600;
+    margin-left: 15px;
+  }
+}

@@ -1,0 +1,7 @@
+.font-heading {
+  font-size: 22px;
+  font-weight: 700;
+  color: primary;
+  padding-bottom: 5px;
+  border-bottom: 3px solid #cc080b;
+}

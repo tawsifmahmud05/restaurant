@@ -1,0 +1,71 @@
+/* width */
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: rgb(255, 255, 255);
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgba(200, 50, 50, 0.7);
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: white;
+}
+
+* {
+  font-family: "Poppins", sans-serif;
+}
+html,
+body {
+  height: 100%;
+}
+
+.add-btn {
+  background-color: rgb(200, 50, 50);
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  color: white;
+  font-weight: 600;
+  margin-left: auto;
+}
+.add-btn:hover {
+  background-color: white;
+  color: rgb(200, 50, 50);
+}
+
+.font-heading {
+  font-size: 22px;
+  font-weight: 700;
+  color: primary;
+  margin-bottom: 0px;
+  border-bottom: 3px solid #cc080b;
+}
+
+.delete-btn {
+  fill: rgba(200, 50, 50, 0.9);
+}
+.delete-btn:hover {
+  fill: red;
+}
+
+@media (max-width: 767px) {
+  .add-btn {
+    margin-left: 0;
+
+    margin-top: 20px;
+  }
+  .mat-mdc-paginator-container {
+    padding: 0px !important;
+  }
+  .mobile-margin-bottom {
+    margin-bottom: 100px;
+  }
+  .image-flex-direction {
+    flex-direction: column-reverse;
+  }
+}

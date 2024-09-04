@@ -1,0 +1,79 @@
+/* Example styles for the table */
+.example-container {
+  display: flex;
+  flex-direction: column;
+}
+
+table {
+  width: 100%;
+}
+
+.mat-elevation-z8 {
+  box-shadow:
+    0 5px 5px -3px rgba(0, 0, 0, 0.2),
+    0 8px 10px 1px rgba(0, 0, 0, 0.14),
+    0 3px 14px 2px rgba(0, 0, 0, 0.12);
+  margin-bottom: 100px;
+}
+
+.circular-image {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+th {
+  color: rgb(200, 50, 50);
+  font-weight: 700;
+}
+
+.mobile-label {
+  display: none;
+}
+
+@media (max-width: 767px) {
+  .mat-elevation-z8 {
+    z-index: -1;
+    box-shadow: none;
+  }
+
+  .mat-mdc-table {
+    background-color: transparent;
+  }
+  .mobile-label {
+    width: 50%;
+    display: inline-block;
+    font-weight: bold;
+  }
+
+  .food-image {
+    width: 100% !important;
+    justify-content: center;
+  }
+
+  .circular-image {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  .mat-header-row {
+    display: none;
+  }
+
+  .mat-row {
+    flex-direction: column;
+    align-items: start;
+    padding: 8px 24px;
+    margin-bottom: 10px;
+    border-radius: 20px;
+    background-color: white;
+  }
+  .mat-mdc-cell {
+    border: 0px solid white;
+    padding: 0px;
+    font-size: large;
+  }
+}

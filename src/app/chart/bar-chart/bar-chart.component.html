@@ -1,0 +1,23 @@
+<!-- <div class="chart-container">
+  <canvas id="MyChart">{{ chart }}</canvas>
+</div> -->
+<div class="chart">
+  <!-- <canvas
+    baseChart
+    [type]="'bar'"
+    [legend]="true"
+    [datasets]="chartData"
+    [labels]="chartLabels"
+    [options]="chartOptions"
+  >
+  </canvas> -->
+  <canvas
+    baseChart
+    [type]="'bar'"
+    [datasets]="chartData"
+    [labels]="chartLabels"
+    [options]="chartOptions"
+    style="background-color: white; border-radius: 10px"
+  >
+  </canvas>
+</div>

@@ -1,0 +1,10 @@
+<div class="notification-container">
+  <div
+    *ngFor="let notification of notifications"
+    [@slideInOut]
+    class="notification"
+    [ngClass]="notification.type"
+  >
+    {{ notification.message }}
+  </div>
+</div>
